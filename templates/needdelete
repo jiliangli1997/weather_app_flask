@@ -1,0 +1,58 @@
+Highcharts.chart('container1', {
+
+                chart: {
+                    type: 'arearange',
+                    zoomType: 'x',
+                    scrollablePlotArea: {
+                        minWidth: 500,
+                        scrollPositionX: 1
+                    }
+                },
+
+                title: {
+                    text: 'Temperature variation by day'
+                },
+
+                xAxis: {
+                    type: 'datetime',
+                    categories: cat,
+
+                    tickInterval: 1
+                },
+
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+
+                tooltip: {
+                    crosshairs: true,
+                    shared: true,
+                    valueSuffix: '°C',
+                    xDateFormat: '%b %e, %Y'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+                series: [{
+                    name: 'Temperatures',
+                    data: temp,
+                    color: {
+                        linearGradient : {
+                            x1: 0,
+                            y1: 1,
+                            x2: 0,
+                            y2: 0
+                        },
+                        stops : [
+                            [0, Highcharts.Color('#f7aa30').setOpacity(1).get('rgba')],
+                            [1, Highcharts.Color('#d9e6f2').setOpacity(1).get('rgba')],
+                        ]
+                    },
+
+                }]
+
+            });

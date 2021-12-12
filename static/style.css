@@ -1,0 +1,364 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+.WeatherSearch{
+    font-weight: bold;
+    font-size: large;
+}
+
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: lightgray;
+}
+.title{
+    background-image: url(Images/banner.jpg);
+    background-position: bottom;
+    background-size: 100%;
+    width: 500px;
+    height: 100px;
+    position: relative;
+}
+.WeatherSearch{
+    /*text-align: left;*/
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+.Fill-out{
+    /*text-align: left;*/
+    position: absolute;
+    top: 45px;
+    left: 30px;
+}
+
+.input-form{
+    width: 500px;
+    background: white;
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+
+
+label {
+    color: #5673b0;
+    font-weight: bold;
+}
+input, select{
+    border-style:solid;
+}
+.street input{
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+.city input{
+    width: 80%;
+    height: 20px;
+}
+.state select{
+    width: 103%;
+    height: 28px;
+}
+.line{
+    width: 430px;
+    background-color: #5673b0;
+    height: 0.1rem;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px 10px 35px;
+}
+
+.city-state{
+    display: flex;
+}
+
+.city, .state{
+    flex: 1;
+}
+
+.state label:after, .street label:after, .city label:after {
+    content:"*";
+    color: red;
+}
+
+.box{
+    padding: 0px 40px 20px 35px;
+    font-size: 15px;
+}
+
+.button{
+    position: relative;
+    left: 35px;
+    margin-bottom: 15px;
+}
+
+.submit_button{
+    background-color: #5673b0;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    box-shadow: 0px 3px darkblue;
+    font-weight: lighter;
+}
+
+.clear_button{
+    background-color: #fab704;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    box-shadow: 0px 3px darkorange;
+    font-weight: lighter;
+}
+
+.card{
+    width: 700px;
+    background: white;
+
+}
+
+.card:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+}
+
+.detail_card:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+}
+
+.card{
+    padding: 10px 30px;
+    color: #8a8a8a;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.big_pic{
+    height: 100%;
+    flex-grow:1;
+}
+
+.big_pic p{
+    margin-left: 20px;
+    margin-top: 0px;
+}
+.temperature{
+    height: 100%;
+    flex-grow:1;
+    font-size: 120px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: start;
+    height: 150px;
+    padding-top: 0px;
+    margin-top: 0px;
+    position: relative;
+    top:-10px;
+    color: #8a8a8a;
+}
+
+
+.img_line{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+.detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.detail div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table_content {
+    text-align: center;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+#table_img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#table_row{
+    background-color: white;
+}
+
+.table_head{
+    background: #4f6eac;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+table{
+    border-spacing: 0px 5px;
+    font-size: 15px;
+}
+
+
+a {
+    display: inline;
+    text-decoration: none;
+    color: black;
+}
+
+tr[data-href]{
+    cursor: pointer;
+}
+
+
+
+.upper_card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.upper_card img{
+    width: 150px;
+    height: 150px;
+}
+
+.upper_card p{
+    margin-top: 0px;
+    margin-top-bottom: 0px;
+}
+
+.card_text{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: #3a507a;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.maxmin{
+    font-size: 30px;
+}
+.detail_card{
+    width: 500px;
+    height: 430px;
+    background-image: linear-gradient(white, #3a507a);
+}
+
+.Daily,.charts{
+    font-size: 35px;
+    font-weight: normal;
+}
+.Precipitation{
+    height: 200px;
+    padding-left: 200px;
+    padding-bottom: 30px;
+    border-spacing: 0px 0px;
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    bottom: 40px;
+}
+
+.Precipitation p{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0px;
+}
+
+.left {
+    text-align: right;
+}
+
+.point-down{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.point-up{
+    display: none;
+    cursor: pointer;
+}
+#point-up-img{
+    cursor: pointer;
+
+}
+
+.point-up-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 400px;
+}
+
+
+
+.hide1 {
+    color: black;
+    background-color: #e9e9ed;
+    pointer-events: none;
+}
+.hide {
+    color: #e9e9ed;
+    background-color: #e9e9ed;
+    pointer-events: none;
+}
+
+
+.hide::selection {
+    color: none;
+    background: none;
+}
+
+.hide::-moz-selection {
+    color: none;
+    background: none;
+}
+.highcharts-color-1 {
+    fill: #90ed7d;
+    stroke: #90ed7d;
+}
+
+
+

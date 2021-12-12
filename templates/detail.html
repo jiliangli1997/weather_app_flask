@@ -1,0 +1,386 @@
+{% extends 'base.html' %}
+{% block title %}
+    Detail Weather
+{% endblock %}
+
+{% block content %}
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (JSON.parse('{{ street | tojson }}') !== "***") {
+                var city = JSON.parse('{{ city | tojson }}');
+                var street = JSON.parse('{{ street | tojson }}');
+                var state = JSON.parse('{{ state | tojson }}');
+                console.log(state)
+                document.getElementById('city').value = city;
+                document.getElementById('street').value = street;
+                document.getElementById('state').value = state;
+            } else {
+                document.getElementById('city').classList.add("hide");
+                document.getElementById('street').classList.add("hide");
+                document.getElementById('state').classList.add("hide");
+                document.getElementById("auto").checked = true;
+            }
+        });
+
+
+
+
+    </script>
+
+    <p class="Daily">Daily Weather Details</p>
+
+    <div class="detail_card">
+        <div class="upper_card">
+            {% if content["weatherCode"] == 1000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p>Clear</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/clear_day.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 1100 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Mostly Clear</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/mostly_clear_day.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 1101 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Partly Cloudy</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/partly_cloudy_day.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 1102 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Mostly Cloudy</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/mostly_cloudy.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 1001 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Cloudy</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/cloudy.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 2000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Fog </p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/fog.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 2100 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Light Fog </p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/fog_light.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 8000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Thunderstorm</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/tstorm.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 5001 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Flurries</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/flurries.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 5100 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Light Snow</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/snow_light.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 5000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Snow</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/snow.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 5101 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Heavy Snow</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/snow_heavy.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 7102 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Light Ice Pellets</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/ice_pellets_light.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 7000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Ice Pellets</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/ice_pellets.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 7101 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Heavy Ice Pellets</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/ice_pellets_heavy.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 4000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Drizzle</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/drizzle.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 6000 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Freezing Drizzle</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/freezing_drizzle.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 6200 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Light Freezing Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/freezing_rain_light.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 6001 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Freezing Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/freezing_rain.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 6201 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Heavy Freezing Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/freezing_rain_heavy.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 4200 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Light Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/rain_light.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 4001 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/rain.svg" alt="" width="130" height="130">
+            {% elif content["weatherCode"] == 4201 %}
+                <div class="card_text">
+                    <p>{{ date }}</p>
+                    <p> Heavy Rain</p>
+                    <p class="maxmin">{{ content["temperatureMax"] }}°F/{{ content["temperatureMin"] }}°F</p>
+                </div>
+                <img src="../static/Images/rain_heavy.svg" alt="" width="130" height="130">
+            {% endif %}
+        </div>
+
+        {% if content["precipitationType"] == 0 %}
+            <table class="Precipitation">
+                <tr>
+                    <td><p class="left">Precipitation:</p></td>
+                    <td><p style="font-size: 18px">N/A</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Chance of N/A:</p></td>
+                    <td><p style="font-size: 18px">{{ content["precipitationProbability"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Wind Speed:</p></td>
+                    <td><p style="font-size: 18px">{{ content["windSpeed"] }}mph</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Humidity:</p></td>
+                    <td><p style="font-size: 18px">{{ content["humidity"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Visibility:</p></td>
+                    <td><p style="font-size: 18px">{{ content["visibility"] }}mi</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Sunrise/Sunset:</p></td>
+                    <td><p style="font-size: 18px">{{ sumriseTime }}/{{ sunsetTime }}</p></td>
+                </tr>
+            </table>
+        {% elif content["precipitationType"] == 1 %}
+            <table class="Precipitation">
+                <tr>
+                    <td><p class="left">Precipitation:</p></td>
+                    <td><p style="font-size: 18px">Rain</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Chance of Rain:</p></td>
+                    <td><p style="font-size: 18px">{{ content["precipitationProbability"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Wind Speed:</p></td>
+                    <td><p style="font-size: 18px">{{ content["windSpeed"] }}mph</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Humidity:</p></td>
+                    <td><p style="font-size: 18px">{{ content["humidity"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Visibility:</p></td>
+                    <td><p style="font-size: 18px">{{ content["visibility"] }}mi</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Sunrise/Sunset:</p></td>
+                    <td><p style="font-size: 18px">{{ sumriseTime }}/{{ sunsetTime }}</p></td>
+                </tr>
+            </table>
+        {% elif content["precipitationType"] == 2 %}
+            <table class="Precipitation">
+                <tr>
+                    <td><p class="left">Precipitation:</p></td>
+                    <td><p style="font-size: 18px">Snow</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Chance of Snow:</p></td>
+                    <td><p style="font-size: 18px">{{ content["precipitationProbability"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Wind Speed:</p></td>
+                    <td><p style="font-size: 18px">{{ content["windSpeed"] }}mph</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Humidity:</p></td>
+                    <td><p style="font-size: 18px">{{ content["humidity"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Visibility:</p></td>
+                    <td><p style="font-size: 18px">{{ content["visibility"] }}mi</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Sunrise/Sunset:</p></td>
+                    <td><p style="font-size: 18px">{{ sumriseTime }}/{{ sunsetTime }}</p></td>
+                </tr>
+            </table>
+        {% elif content["precipitationType"] == 3 %}
+            <table class="Precipitation">
+                <tr>
+                    <td><p class="left">Precipitation:</p></td>
+                    <td><p style="font-size: 18px">Freezing Rain</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Chance of Freezing Rain:</p></td>
+                    <td><p style="font-size: 18px">{{ content["precipitationProbability"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Wind Speed:</p></td>
+                    <td><p style="font-size: 18px">{{ content["windSpeed"] }}mph</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Humidity:</p></td>
+                    <td><p style="font-size: 18px">{{ content["humidity"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Visibility:</p></td>
+                    <td><p style="font-size: 18px">{{ content["visibility"] }}mi</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Sunrise/Sunset:</p></td>
+                    <td><p style="font-size: 18px">{{ sumriseTime }}/{{ sunsetTime }}</p></td>
+                </tr>
+            </table>
+        {% elif content["precipitationType"] == 4 %}
+            <table class="Precipitation">
+                <tr>
+                    <td><p class="left">Precipitation:</p></td>
+                    <td><p style="font-size: 18px">Ice Pellets</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Chance of Ice Pellets:</p></td>
+                    <td><p style="font-size: 18px">{{ content["precipitationProbability"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Wind Speed:</p></td>
+                    <td><p style="font-size: 18px">{{ content["windSpeed"] }}mph</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Humidity:</p></td>
+                    <td><p style="font-size: 18px">{{ content["humidity"] }}%</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Visibility:</p></td>
+                    <td><p style="font-size: 18px">{{ content["visibility"] }}mi</p></td>
+                </tr>
+                <tr>
+                    <td><p class="left">Sunrise/Sunset:</p></td>
+                    <td><p style="font-size: 18px">{{ sumriseTime }}/{{ sunsetTime }}</p></td>
+                </tr>
+            </table>
+        {% endif %}
+    </div>
+
+    <p class="charts">Weather Charts</p>
+    <div class="point-down">
+        <a href="#hide"><img src="../static/Images/point-down-512.png" onclick="show({{ date_content }}, {{ hour_data }})" alt="" width="80px" height="80px"></a>
+    </div>
+    <div class="point-up" id="hide" >
+        <div class="point-up-div">
+            <p class="charts">Weather Charts</p>
+            <img id="point-up-img" src="../static/Images/point-up-512.png" onclick="hide()" alt="" width="80px" height="80px">
+        </div>
+        <figure class="highcharts-figure" >
+            <div id="container1"></div>
+
+        </figure>
+
+        <figure class="highcharts-figure">
+            <div id="container">
+                <div id="loading">
+                    <i class="fa fa-spinner fa-spin"></i> Loading data from external source
+                </div>
+            </div>
+
+        </figure>
+
+
+
+    </div>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js"></script>
+    <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js"></script>
+    <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{% endblock %}

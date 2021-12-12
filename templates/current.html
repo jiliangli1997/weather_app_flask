@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% block title %}
+    Current Weather
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card_address">
+            <p>{{ location }}</p>
+        </div>
+        <div class="img_line">
+            <div class="big_pic">
+                {% if content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 1000 %}
+                    <img src="../static/Images/clear_day.svg" alt="" width="150" height="150">
+                    <p> Clear</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 1100 %}
+                    <img src="../static/Images/mostly_clear_day.svg" alt="" width="150" height="150">
+                    <p> Mostly Clear</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 1101 %}
+                    <img src="../static/Images/partly_cloudy_day.svg" alt="" width="150" height="150">
+                    <p> Partly Cloudy</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 1102 %}
+                    <img src="../static/Images/mostly_cloudy.svg" alt="" width="150" height="150">
+                    <p> Mostly Cloudy</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 1001 %}
+                    <img src="../static/Images/cloudy.svg" alt="" width="150" height="150">
+                    <p> Cloudy</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 2000 %}
+                    <img src="../static/Images/fog.svg" alt="" width="150" height="150">
+                    <p> Fog</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 2100 %}
+                    <img src="../static/Images/fog_light.svg" alt="" width="150" height="150">
+                    <p> Light Fog</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 8000 %}
+                    <img src="../static/Images/tstorm.svg" alt="" width="150" height="150">
+                    <p> Thunderstorm</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 5001 %}
+                    <img src="../static/Images/flurries.svg" alt="" width="150" height="150">
+                    <p> Flurries</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 5100 %}
+                    <img src="../static/Images/snow_light.svg" alt="" width="150" height="150">
+                    <p> Light Snow</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 5000 %}
+                    <img src="../static/Images/snow.svg" alt="" width="150" height="150">
+                    <p> Snow</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 5101 %}
+                    <img src="../static/Images/snow_heavy.svg" alt="" width="150" height="150">
+                    <p> Heavy Snow</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 7102 %}
+                    <img src="../static/Images/ice_pellets_light.svg" alt="" width="150" height="150">
+                    <p> Light Ice Pellets</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 7000 %}
+                    <img src="../static/Images/ice_pellets.svg" alt="" width="150" height="150">
+                    <p> Ice Pellets</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 7101 %}
+                    <img src="../static/Images/ice_pellets_heavy.svg" alt="" width="150" height="150">
+                    <p> Heavy Ice Pellets</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 4000 %}
+                    <img src="../static/Images/drizzle.svg" alt="" width="150" height="150">
+                    <p> Drizzle</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 6000 %}
+                    <img src="../static/Images/freezing_drizzle.svg" alt="" width="150" height="150">
+                    <p> Freezing Drizzle</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 6200 %}
+                    <img src="../static/Images/freezing_rain_light.svg" alt="" width="150" height="150">
+                    <p> Light Freezing Rain</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 6001 %}
+                    <img src="../static/Images/freezing_rain.svg" alt="" width="150" height="150">
+                    <p> Freezing Rain</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 6201 %}
+                    <img src="../static/Images/freezing_rain_heavy.svg" alt="" width="150" height="150">
+                    <p> Heavy Freezing Rain</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 4200 %}
+                    <img src="../static/Images/rain_light.svg" alt="" width="150" height="150">
+                    <p> Light Rain</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 4001 %}
+                    <img src="../static/Images/rain.svg" alt="" width="150" height="150">
+                    <p> Rain</p>
+                {% elif content["data"]["timelines"][2]["intervals"][0]["values"]["weatherCode"] == 4201 %}
+                    <img src="../static/Images/rain_heavy.svg" alt="" width="150" height="150">
+                    <p> Heavy Rain</p>
+                {% endif %}
+            </div>
+            <div class="temperature">
+                <div>{{content["data"]["timelines"][2]["intervals"][0]["values"]["temperature"]}}°</div>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="humidity">
+                <p>Humidity</p>
+                <img src="../static/Images/humidity.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["humidity"] }}%</p>
+            </div>
+            <div class="pressure">
+                <p>Pressure</p>
+                <img src="../static/Images/pressure.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["pressureSeaLevel"] }}inHg</p>
+            </div>
+            <div class="wind_speed">
+                <p>Wind Speed</p>
+                <img src="../static/Images/windspeed.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["windSpeed"] }}mph</p>
+            </div>
+            <div class="visibility">
+                <p>Visibility</p>
+                <img src="../static/Images/Visibility.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["visibility"] }}mi</p>
+            </div>
+            <div class="cloud_cover">
+                <p>Cloud Cover</p>
+                <img src="../static/Images/CloudCover.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["cloudCover"] }}%</p>
+            </div>
+            <div class="uv">
+                <p>UV level</p>
+                <img src="../static/Images/UV.png" alt="" width="50" height="50">
+                <p>{{ content["data"]["timelines"][2]["intervals"][0]["values"]["uvIndex"] }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <table>
+            <tr class="table_head" height="40">
+                <th>Date</th>
+                <th>Status</th>
+                <th>Temp High</th>
+                <th>Temp Low</th>
+                <th>Wind Speed</th>
+            </tr>
+{#            {% for dic in content["data"]["timelines"][1]["intervals"] %}#}
+            <div class="table_content">
+                {% for x in range (15) %}
+                    <tr  id="table_row" data-href="/detail{{ x }}+{{ format_location }}+{{ day[x] }} + {{ city }} + {{ street }} + {{ state }}" height="70">
+                        <td class="table_content"> {{ day[x] }}</td>
+    {#                    <td>{{ content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] }}</td>#}
+                        <td class="table_content" id="table_img">
+                            {% if content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 1000 %}
+                                <img src="../static/Images/clear_day.svg" alt="" width="50" height="50">
+                                <p> Clear</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 1100 %}
+                                <img src="../static/Images/mostly_clear_day.svg" alt="" width="50" height="50">
+                                <p> Mostly Clear</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 1101 %}
+                                <img src="../static/Images/partly_cloudy_day.svg" alt="" width="50" height="50">
+                                <p> Partly Cloudy</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 1102 %}
+                                <img src="../static/Images/mostly_cloudy.svg" alt="" width="50" height="50">
+                                <p> Mostly Cloudy</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 1001 %}
+                                <img src="../static/Images/cloudy.svg" alt="" width="50" height="50">
+                                <p> Cloudy</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 2000 %}
+                                <img src="../static/Images/fog.svg" alt="" width="50" height="50">
+                                <p> Fog</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 2100 %}
+                                <img src="../static/Images/fog_light.svg" alt="" width="50" height="50">
+                                <p> Light Fog</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 8000 %}
+                                <img src="../static/Images/tstorm.svg" alt="" width="50" height="50">
+                                <p> Thunderstorm</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 5001 %}
+                                <img src="../static/Images/flurries.svg" alt="" width="50" height="50">
+                                <p> Flurries</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 5100 %}
+                                <img src="../static/Images/snow_light.svg" alt="" width="50" height="50">
+                                <p> Light Snow</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 5000 %}
+                                <img src="../static/Images/snow.svg" alt="" width="50" height="50">
+                                <p> Snow</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 5101 %}
+                                <img src="../static/Images/snow_heavy.svg" alt="" width="50" height="50">
+                                <p> Heavy Snow</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 7102 %}
+                                <img src="../static/Images/ice_pellets_light.svg" alt="" width="50" height="50">
+                                <p> Light Ice Pellets</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 7000 %}
+                                <img src="../static/Images/ice_pellets.svg" alt="" width="50" height="50">
+                                <p> Ice Pellets</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 7101 %}
+                                <img src="../static/Images/ice_pellets_heavy.svg" alt="" width="50" height="50">
+                                <p> Heavy Ice Pellets</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 4000 %}
+                                <img src="../static/Images/drizzle.svg" alt="" width="50" height="50">
+                                <p> Drizzle</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 6000 %}
+                                <img src="../static/Images/freezing_drizzle.svg" alt="" width="50" height="50">
+                                <p> Freezing Drizzle</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 6200 %}
+                                <img src="../static/Images/freezing_rain_light.svg" alt="" width="50" height="50">
+                                <p> Light Freezing Rain</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 6001 %}
+                                <img src="../static/Images/freezing_rain.svg" alt="" width="50" height="50">
+                                <p> Freezing Rain</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 6201 %}
+                                <img src="../static/Images/freezing_rain_heavy.svg" alt="" width="50" height="50">
+                                <p> Heavy Freezing Rain</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 4200 %}
+                                <img src="../static/Images/rain_light.svg" alt="" width="50" height="50">
+                                <p> Light Rain</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 4001 %}
+                                <img src="../static/Images/rain.svg" alt="" width="50" height="50">
+                                <p> Rain</p>
+                            {% elif content["data"]["timelines"][1]["intervals"][x]["values"]["weatherCode"] == 4201 %}
+                                <img src="../static/Images/rain_heavy.svg" alt="" width="50" height="50">
+                                <p> Heavy Rain</p>
+                            {% endif %}
+                        </td>
+                        <td class="table_content">{{ content["data"]["timelines"][1]["intervals"][x]["values"]["temperatureMax"] }}</td>
+                        <td class="table_content">{{ content["data"]["timelines"][1]["intervals"][x]["values"]["temperatureMin"] }}</td>
+                        <td class="table_content">{{ content["data"]["timelines"][1]["intervals"][x]["values"]["windSpeed"] }}</td>
+                    </tr>
+                {% endfor %}
+
+{#                <input type="text" id="street" name="city" >#}
+{#                <input type="text" id="city" name="city" >#}
+            </div>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            var check = JSON.parse('{{ check | tojson }}');
+            console.log(check)
+            if (check!=='on') {
+                var city = JSON.parse('{{ city | tojson }}');
+                var street = JSON.parse('{{ street | tojson }}');
+                var state = JSON.parse('{{ state | tojson }}');
+                document.getElementById('city').value = city;
+                document.getElementById('street').value = street;
+                document.getElementById('state').value = state;
+            } else {
+                document.getElementById('city').classList.add("hide");
+                document.getElementById('street').classList.add("hide");
+                document.getElementById('state').classList.add("hide");
+                document.getElementById("auto").checked = true;
+            }
+        });
+
+
+
+    </script>
+    <script src="../static/index.js"></script>
+
+{% endblock %}

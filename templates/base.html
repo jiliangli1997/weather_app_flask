@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+
+    <title>
+
+    </title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">
+            <p class="WeatherSearch">Weather Search</p>
+            <p class="Fill-out">Fill out the form to get weather info!</p>
+        </div>
+
+        <div class="input-form">
+            <form id="form" method="GET" >
+                <div class="location">
+                    <div class="street">
+                        <label for="street">Street</label>
+                        <br>
+                        <input type="text" id="street" name="street" required>
+                    </div>
+
+                    <div class="city-state">
+                        <div class="city">
+                            <label for="city">City</label>
+                            <br>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="state">
+                            <label for="state">State</label>
+                            <br>
+                            <select id="state" name="state" required>
+                                <option value="" selected disabled hidden>Select your state</option>
+                                <option>Alabama</option>
+                                <option>Alaska</option>
+                                <option>Arizona</option>
+                                <option>Arkansas</option>
+                                <option>California</option>
+                                <option>Colorado</option>
+                                <option>Connecticut</option>
+                                <option>Delaware</option>
+                                <option>District Of Columbia</option>
+                                <option>Florida</option>
+                                <option>Georgia</option>
+                                <option>Hawaii</option>
+                                <option>Idaho</option>
+                                <option>Illinois</option>
+                                <option>Indiana</option>
+                                <option>Iowa</option>
+                                <option>Kansas</option>
+                                <option>Kentucky</option>
+                                <option>Louisiana</option>
+                                <option>Maine</option>
+                                <option>Maryland</option>
+                                <option>Massachusetts</option>
+                                <option>Michigan</option>
+                                <option>Minnesota</option>
+                                <option>Mississippi</option>
+                                <option>Missouri</option>
+                                <option>Montana</option>
+                                <option>Nebraska</option>
+                                <option>Nevada</option>
+                                <option>New Hampshire</option>
+                                <option>New Jersey</option>
+                                <option>New Mexico</option>
+                                <option>New York</option>
+                                <option>North Carolina</option>
+                                <option>North Dakota</option>
+                                <option>Ohio</option>
+                                <option>Oklahoma</option>
+                                <option>Oregon</option>
+                                <option>Pennsylvania</option>
+                                <option>Rhode Island</option>
+                                <option>South Carolina</option>
+                                <option>South Dakota</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Utah</option>
+                                <option>Vermont</option>
+                                <option>Virginia</option>
+                                <option>Washington</option>
+                                <option>West Virginia</option>
+                                <option>Wisconsin</option>
+                                <option>Wyoming</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="line"/>
+                <div class="box">
+                    <label for="auto">Want us to auto-detect your location? Check here</label>
+                    <input type="checkbox" id="auto" name="auto" onclick="disableform()">
+                </div>
+                <div class="button">
+                    <button class="submit_button">SUBMIT</button>
+                    <button type="reset" class="clear_button" onclick="window.location='/'">CLEAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+<script src="../static/index.js">
+   
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</html>
+
